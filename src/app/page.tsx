@@ -34,7 +34,7 @@ export default function Home() {
         {/* About Section */}
         <section className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4">Tentang Saya</h2>
-          <p className="text-gray-400">
+          <p className="text-gray-700 dark:text-gray-400">
             Saya adalah seorang Web Developer dan Android Developer yang bersemangat untuk menciptakan pengalaman pengguna yang luar biasa.
             Saya memiliki pengalaman dalam HTML, CSS, JavaScript, React, Next.js, PHP, Kotlin, JetPackCompose.
           </p>
@@ -51,7 +51,7 @@ export default function Home() {
         {/* Portfolio Section */}
         <section className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
           <h2 className="text-2xl font-semibold mb-4">Proyek Saya</h2>
-          <p className="text-gray-400">
+          <p className="text-gray-700 dark:text-gray-400">
             Lihat beberapa proyek yang telah saya kerjakan, mulai dari aplikasi web hingga aplikasi android.
           </p>
           <div className='text-right'>
