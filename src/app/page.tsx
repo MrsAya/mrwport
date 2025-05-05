@@ -1,16 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import Head from 'next/head';
+import type { Metadata } from 'next';
 
-<Head>
-  <title>Mr Wiguna - Web Developer</title>
-  <meta name="description" content="Portofolio Muhammad Radya Wiguna, seorang Web Developer dan Android Developer." />
-  <meta name="keywords" content="Web Developer, Android Developer, Portofolio" />
-</Head>
+export const metadata: Metadata = {
+  title: 'Mr Wiguna - Web Developer',
+  description: 'Portofolio Muhammad Radya Wiguna, seorang Web Developer dan Android Developer.',
+  keywords: ['Web Developer', 'Android Developer', 'Portofolio'],
+};
 
 export default function Home() {
   return (
+
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex flex-col items-center justify-center p-6">
       {/* Header */}
       <header className="text-center mb-12">
