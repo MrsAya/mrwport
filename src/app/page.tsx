@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
+import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export const metadata: Metadata = {
   title: 'Mr Wiguna - Web Developer',
@@ -49,7 +50,7 @@ export default function Home() {
         </section>
 
         {/* Portfolio Section */}
-        <section className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+        <section className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4">Proyek Saya</h2>
           <p className="text-gray-700 dark:text-gray-400">
             Lihat beberapa proyek yang telah saya kerjakan, mulai dari aplikasi web hingga aplikasi android.
@@ -57,9 +58,47 @@ export default function Home() {
           <div className='text-right'>
             <Link
               href="/projects"
-              className="mt-4 inline-flex items-center bg-green-500 dark:bg-gray-900 text-white px-6 py-2 rounded-md shadow hover:bg-green-600 dark:hover:bg-gray-600 ml-auto transition-transform transform hover:scale-105">
+              className="mt-4 inline-flex items-center bg-blue-500 dark:bg-gray-900 text-white px-6 py-2 rounded-md shadow hover:bg-blue-600 dark:hover:bg-gray-600 ml-auto transition-transform transform hover:scale-105">
                 Lihat Proyek
                 <ArrowRight className="ml-2" />
+            </Link>
+          </div>
+        </section>
+
+        <section className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+          <h2 className="text-2xl font-semibold mb-4">Kontak Saya</h2>
+          <p className="text-gray-700 dark:text-gray-400 mb-4">
+            Hubungi saya melalui sosial media berikut:
+          </p>
+          <div className="flex justify-end space-x-4 text-2xl">
+            {/* Instagram */}
+            <Link
+                href="https://www.instagram.com/muhrwiguna27/"
+                className="text-pink-500 hover:text-pink-600"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram />
+            </Link>
+
+            {/* LinkedIn */}
+            <Link
+                href="https://www.linkedin.com/in/muhammadrwiguna/"
+                className="text-blue-600 hover:text-blue-700"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin />
+            </Link>
+
+            {/* GitHub */}
+            <Link
+                href="https://github.com/MrsAya"
+                className="text-gray-700 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-400"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
             </Link>
           </div>
         </section>
@@ -67,7 +106,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-12 text-center text-sm text-gray-500">
-        &copy; 2025 Aya. All rights reserved.
+        &copy; {new Date().getFullYear()} Aya. All rights reserved.
       </footer>
     </div>
   );
