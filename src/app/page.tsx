@@ -7,7 +7,7 @@ import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 export const metadata: Metadata = {
   title: 'Mr Wiguna - Web Developer',
   description: 'Portofolio Muhammad Radya Wiguna, seorang Web Developer dan Android Developer.',
-  keywords: ['Web Developer', 'Android Developer', 'Portofolio'],
+  keywords: ['Web Developer', 'Android Developer', 'Portofolio', 'Next.js', 'React', 'Kotlin', 'Jetpack Compose', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Muhammad Radya Wiguna'],
 };
 
 export default function Home() {
