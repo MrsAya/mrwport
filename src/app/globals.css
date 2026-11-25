@@ -1,26 +1,185 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Tema terang (default) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --fg: #0b0d12;
+  --muted: #5a6472;
+  --line: rgba(11, 13, 18, 0.12);
+  --accent: #0050f0;
+  --accent-fg: #ffffff;
+  --grid: rgba(11, 13, 18, 0.055);
+  --glow: rgba(0, 80, 240, 0.13);
+}
+
+/* Tema gelap: dipilih pengguna */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #06080c;
+  --surface: #0c1016;
+  --fg: #e9edf3;
+  --muted: #8a94a4;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #5ee6ff;
+  --accent-fg: #03131a;
+  --grid: rgba(255, 255, 255, 0.045);
+  --glow: rgba(94, 230, 255, 0.14);
+}
+
+/* Tema gelap: mengikuti sistem bila pengguna belum memilih (juga tanpa JavaScript) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #06080c;
+    --surface: #0c1016;
+    --fg: #e9edf3;
+    --muted: #8a94a4;
+    --line: rgba(255, 255, 255, 0.12);
+    --accent: #5ee6ff;
+    --accent-fg: #03131a;
+    --grid: rgba(255, 255, 255, 0.045);
+    --glow: rgba(94, 230, 255, 0.14);
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Latar: grid tipis yang memudar + satu pendar aksen */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(60rem 28rem at 50% -8rem, var(--glow), transparent 70%),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 85%);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Label kecil bergaya terminal */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.label::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Bingkai sudut di sekeliling foto */
+.frame {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--accent);
+}
+
+.frame::before {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.frame::after {
+  right: 0;
+  bottom: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* Animasi masuk */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes pulse-dot {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .pulse-dot {
+    animation: none;
+  }
+  body {
+    transition: none;
+  }
 }
