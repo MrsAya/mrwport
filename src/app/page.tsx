@@ -51,12 +51,31 @@ const CERTIFICATES = [
 
 // Repo publik di github.com/MrsAya. Tambahkan `detail` untuk memberi deskripsi singkat.
 const PROJECTS: { name: string; tech?: string; detail?: string; href: string }[] = [
-  { name: 'mrwport', tech: 'TypeScript', detail: 'Situs portofolio ini.', href: 'https://github.com/MrsAya/mrwport' },
-  { name: 'todolist-php', tech: 'PHP', href: 'https://github.com/MrsAya/todolist-php' },
-  { name: 'AES-TA', tech: 'PHP', href: 'https://github.com/MrsAya/AES-TA' },
+  {
+    name: 'mrwport',
+    tech: 'Next.js / TypeScript / Tailwind CSS',
+    detail: 'Situs portofolio ini: satu halaman dengan tema terang dan gelap.',
+    href: 'https://github.com/MrsAya/mrwport',
+  },
+  {
+    name: 'todolist-php',
+    tech: 'PHP / SQLite / Docker',
+    detail:
+      'Aplikasi to-do list PHP native: tugas dengan prioritas, status, tenggat, dan tag, lengkap dengan filter tugas penting dan yang hampir jatuh tempo.',
+    href: 'https://github.com/MrsAya/todolist-php',
+  },
+  {
+    name: 'AES-TA',
+    tech: 'PHP / AES-256',
+    detail:
+      'Aplikasi web konversi dokumen dengan enkripsi AES: teks dari DOCX/PDF dienkripsi lalu disimpan sebagai Excel, dan Excel didekripsi kembali menjadi DOCX/PDF.',
+    href: 'https://github.com/MrsAya/AES-TA',
+  },
   {
     name: 'AplikasiPemilihanKetua',
-    detail: 'Pemilihan Umum Ketua Mabim',
+    tech: 'PHP',
+    detail:
+      'Aplikasi web pemungutan suara untuk Pemilihan Umum Ketua Mabim: pemilih masuk dengan NIM dan token, satu suara per pemilih.',
     href: 'https://github.com/MrsAya/AplikasiPemilihanKetua',
   },
 ];
